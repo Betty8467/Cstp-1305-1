@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(3, 66, 74);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        header {
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        h1 {
+            margin-bottom: 10px;
+            text-align: center;
+            text-decoration: underline;
+            font-size: 50px;
+        }
+       
+        button {
+            padding: 10px 30px;
+            border-radius: 12px;
+            background-color: #0ea9a4;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(255, 255, 255);
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #088e8a;
+        }
+        table {
+            width: 80%;
+            text-align: center;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #00fff7;
+            padding: 8px;
+        }
+        th {
+            background-color: #0ea9a4;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Food List</h1>
+    <button onclick="sortTable()">Sort</button>
+</header>
+
+<table id="itemTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    </tbody>
+</table>
+
+<script>
+    let items = [];
+
+    async function fetchItems() {
+        try {
+            const response = await fetch('info.json');
+            items = await response.json();
+            loadTableData(items);
+        } catch (error) {
+            console.error('Error fetching the items:', error);
+        }
+    }
+
+    function loadTableData(items) {
+        const tableBody = document.querySelector('#itemTable tbody');
+        tableBody.innerHTML = '';
+
+        items.forEach(item => {
+            const row = `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>$${item.price}</td>
+                    <td>${item.description}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    }
+
+    function sortTable() {
+        items.sort((a, b) => a.name.localeCompare(b.name));
+        loadTableData(items);
+    }
+
+    fetchItems();
+</script>
+
+</body>
+</html>
