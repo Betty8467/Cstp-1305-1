@@ -1,0 +1,24 @@
+Question 1 Given an array arr of size n, which of the following sorting algorithms has the best worst-case time complexity?
+A) Bubble Sort
+B) Insertion Sort
+C) Merge Sort
+D) Selection Sort
+
+Your answer - C
+
+Question 2 What is the time complexity of searching for an element in a sorted array using binary search?
+A) O(n)
+B) O(log n)
+C) O(n log n)
+D) O(1)
+
+Your answer - 
+
+Question 3 Which of the following operations can be performed in O(1) time on an array?
+A) Insert an element at the beginning
+B) Access an element by index
+C) Remove an element from the end
+D) Find the maximum element
+
+
+Your answer - 
