@@ -5,6 +5,14 @@ The path sum of a path is the sum of the node's values in the path.
 Given the root of a binary tree, return the maximum path sum of any non-empty path.
 
 */
+class TreeNode {
+    constructor(val = 0, left = null, right = null) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
 
 var maxPathSum = function(root) {
 
@@ -25,3 +33,10 @@ var maxPathSum = function(root) {
     dfs(root);
     return max;
 }
+
+let node2 = new TreeNode(2);
+let node3 = new TreeNode(3);
+let root = new TreeNode(1, node2, node3);
+
+let result = maxPathSum(root);
+console.log(result);

@@ -10,3 +10,21 @@ Input: prices = [7,1,5,3,6,4]
 Output: 5 (Buy on day 2 and sell on day 5 for a profit of 6-1 = 5) 
 
  */
+
+var maxProfit = function(prices) {
+
+    if (prices.length===0) return 0;
+    let maxProfit=0;
+    let buyPrice=prices[0];
+
+    for (const price of prices) {  //loop to go through each umber in the prices array
+        maxProfit=Math.max(maxProfit,price-buyPrice);  //for every price in the array we check what the profit would be by subtracting the price you bought it as from teh price youd sell it as, then you update that price into max profit
+        buyPrice=Math.min(buyPrice,price); //this is updated tobe the lowest price we bought as
+    }
+    return maxProfit
+
+};
+
+const prices = [7, 1, 5, 3, 6, 4];
+const result = maxProfit(prices);
+console.log(result);
